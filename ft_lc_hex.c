@@ -1,31 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_lc_hex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aalremei <nastyarv@mail.ru>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/24 10:09:21 by aalremei          #+#    #+#             */
-/*   Updated: 2022/11/02 10:13:04 by aalremei         ###   ########.fr       */
+/*   Created: 2022/11/01 13:57:13 by aalremei          #+#    #+#             */
+/*   Updated: 2022/11/02 09:25:38 by aalremei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdint.h>
-# include <stdarg.h>
-# include <stdio.h>
+void	ft_putnbr_lchex(unsigned int n)
+{
+	if (n / 16 > 0)
+	{
+		ft_putnbr_lchex(n / 16);
+	}
+	if ((n % 16) >= 10 && (n % 16) < 16)
+	{
+		ft_putchar((n % 16) + 87);
+	}
+	else
+		ft_putchar((n % 16) + 48);
+}
 
-int		ft_putchar(char c);
-size_t	ft_putstr(char *s);
-int		ft_pointer(unsigned long n);
-int		ft_printf(const char *st, ...);
-int		ft_dgtlen(int i);
-int		ft_uns_dgtlen(unsigned int i);
-int		ft_lc_hex(unsigned int i);
-int		ft_uc_hex(unsigned int i);
+int	ft_lc_hex(unsigned int i)
+{
+	int				len;
 
-#endif
+	len = 0;
+	ft_putnbr_lchex(i);
+	if (i == 0)
+		len = 1;
+	while (i)
+	{
+		i = i / 16;
+		len++;
+	}
+	return (len);
+}

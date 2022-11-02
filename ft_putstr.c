@@ -6,7 +6,7 @@
 /*   By: aalremei <nastyarv@mail.ru>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 10:15:10 by aalremei          #+#    #+#             */
-/*   Updated: 2022/10/27 14:25:59 by aalremei         ###   ########.fr       */
+/*   Updated: 2022/11/02 09:14:17 by aalremei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ size_t	ft_putstr(char *s)
 		write (1, &s[i], 1);
 		i++;
 	}
-	return (ft_strlen(s));
+	return (i);
 }
